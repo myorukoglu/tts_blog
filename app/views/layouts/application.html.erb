@@ -21,6 +21,13 @@
     <li class="nav-item">
 
     <% if user_signed_in? %>
+     <% if current_user.avatar.url %>
+     <%= image_tag current_user.avatar.url%>
+     <% else %>
+      <%= gravatar_tag current_user.email, size: 50 %>
+     <% end %>
+
+      
       <%= link_to "Update Account", edit_user_registration_path(), class: "btn btn-success" %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
     <% else %>
