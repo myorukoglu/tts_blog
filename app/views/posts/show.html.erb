@@ -21,7 +21,10 @@
 	    <%= comment.comment_entry %>
 	</p>
 <% end %>
-
+<p>
+    <!-- instead of @post.author -->
+    by <%= @post.user.email %>
+</p>
 <div id="comments">
     <%= render 'comments/form', comment: @comment %>
 </div>
