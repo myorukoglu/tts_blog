@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Posts</h1>
+<h1>Posts for <%= @user.username %></h1>
 
-    <% @posts.each do |post| %>
+    <% @user.posts.each do |post| %>
 
 <div class="card" style="margin-bottom: 25px">
   <h5 class="card-header"><%= post.title %></h5>
   <div class="card-body">
-    <h5 class="card-title"><%= link_to post.user.username, user_posts_path(name: post.user.username) %></h5>
+    <h5 class="card-title"><%= post.user ? post.user.username : "" %></h5>
     <p class="card-text"><%= post.blog_entry.html_safe %></p>
 
     <%= link_to 'Show', post, class:"btn btn-primary" %>
@@ -20,5 +20,5 @@
 
     <% end %>
   
-<%= paginate @posts %>
+
 <%= link_to 'New Post', new_post_path %>

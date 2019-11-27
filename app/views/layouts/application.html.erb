@@ -18,9 +18,16 @@
     <li class="nav-item">
       <a class="nav-link" href="<%= posts_path() %>">Posts</a>
     </li>
-    <li class="nav-item">
+
+
+    
+    
 
     <% if user_signed_in? %>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= user_posts_path(name: current_user.username) %>">My Posts</a>
+    </li>
+    <li class="nav-item">
      <% if current_user.avatar.url %>
      <%= image_tag current_user.avatar.url%>
      <% else %>
@@ -30,13 +37,12 @@
       
       <%= link_to "Update Account", edit_user_registration_path(), class: "btn btn-success" %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+      </li>
     <% else %>
-      <%= link_to "Sign In", new_user_session_path(), class: "btn btn-success" %>
+      <li class="nav-item">
+        <%= link_to "Sign In", new_user_session_path(), class: "btn btn-success" %>
+      </li>
     <% end %>
-       
-    </li>
-    
-    
   </ul>
     <%= yield %>
   </body>
